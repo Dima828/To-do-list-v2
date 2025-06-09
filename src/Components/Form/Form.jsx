@@ -1,6 +1,7 @@
 import Input from '../Input/Input'
 import Button from '../Button/Button'
 import { useState } from 'react'
+import '../Form/Form.css'
 
 export default function Form({create}){
     const [value, setValue] = useState('')
@@ -12,13 +13,15 @@ export default function Form({create}){
     } 
     return(
         <div>
-            <Input
+            <div className="form">
+                <Input
                 type='text'
                 placeholder='Новая заметка'
                 value={value}
                 onChange={e => setValue(e.target.value)}
                 />
             <Button onClick={addNotes}>Добавить</Button>
+            </div>
         </div>
     )
 }

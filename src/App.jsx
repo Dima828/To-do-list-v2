@@ -13,10 +13,11 @@ function App() {
   }
 
   return (
-    <>
+    <div className='container'>
+      <h1>Заметки</h1>
       <Form create={createNote}/>
       <ListNotes notes={notes}/>
-    </>
+    </div>
   )
 }
 
