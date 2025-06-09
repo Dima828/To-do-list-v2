@@ -3,25 +3,18 @@ import './App.css'
 import Button from './Components/Button/Button'
 import Input from './Components/Input/Input'
 import ListNotes from './Components/Notes/ListNotes'
+import Form from './Components/Form/Form'
 
 function App() {
   const [notes, setNotes] = useState([])
-  const [value, setValue] = useState('')
 
-  const addNotes = () =>{
-    setNotes([...notes, value])
-    setValue('')
+  const createNote = (newNote) =>{
+    setNotes([...notes, newNote])
   }
 
   return (
     <>
-      <Input
-      type='text'
-      placeholder='Новая заметка'
-      value={value}
-      onChange={e => setValue(e.target.value)}
-      />
-      <Button onClick={addNotes}>Добавить</Button>
+      <Form create={createNote}/>
       <ListNotes notes={notes}/>
     </>
   )

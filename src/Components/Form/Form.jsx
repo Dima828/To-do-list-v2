@@ -1,14 +1,15 @@
-import Button from './Components/Button/Button'
-import Input from './Components/Input/Input'
+import Input from '../Input/Input'
+import Button from '../Button/Button'
+import { useState } from 'react'
 
-export default function Form(){
-    const [notes, setNotes] = useState([])
+export default function Form({create}){
     const [value, setValue] = useState('')
 
     const addNotes = () =>{
-    setNotes([...notes, value])
-    setValue('')
-  }
+        const newNote = [...value]
+        create(newNote)
+        setValue('')
+    } 
     return(
         <div>
             <Input
