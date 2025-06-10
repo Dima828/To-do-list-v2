@@ -11,8 +11,8 @@ export default function Form({create}){
             return
         }else{
             const newNote = {
-                ...value,
-                title: value
+                title: value,
+                complited: false
             }
             create(newNote)
             setValue('')
