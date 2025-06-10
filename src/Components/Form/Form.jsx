@@ -7,9 +7,16 @@ export default function Form({create}){
     const [value, setValue] = useState('')
 
     const addNotes = () =>{
-        const newNote = [...value]
-        create(newNote)
-        setValue('')
+        if(value.length === 0){
+            return
+        }else{
+            const newNote = {
+                ...value,
+                title: value
+            }
+            create(newNote)
+            setValue('')
+        }
     } 
     return(
         <div>

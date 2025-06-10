@@ -6,17 +6,26 @@ import ListNotes from './Components/Notes/ListNotes'
 import Form from './Components/Form/Form'
 
 function App() {
-  const [notes, setNotes] = useState([])
+  const [notes, setNotes] = useState([
+    {id: 1, title: '111', complited: false},
+    {id: 1, title: '222', complited: false},
+    {id: 1, title: '333', complited: false},
+
+  ])
 
   const createNote = (newNote) =>{
     setNotes([...notes, newNote])
+  }
+
+  const removeNote = (remNote) =>{
+    setNotes(remNote)
   }
 
   return (
     <div className='container'>
       <h1>Заметки</h1>
       <Form create={createNote}/>
-      <ListNotes notes={notes}/>
+      {notes.length === 0 ? <p>Нет заметокв</p> : <ListNotes remove={removeNote} notes={notes}/>}
     </div>
   )
 }
