@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react'
 import '../Notes/ListNotes.css'
 
 export default function ListNotes({notes, remove}){
-    let [isActive, setIsActive] = useState(false)
+    let [isActive, setIsActive] = useState(
+        JSON.parse(localStorage.getItem('notes')) || false
+    )
     const handleRemove = (index) =>{
         const removeNote = [...notes]
         removeNote.splice(index, 1)
@@ -19,10 +21,8 @@ export default function ListNotes({notes, remove}){
     }
 
     useEffect(() =>{
-        if(notes.length == 5){
-            alert('5 значений')
-        }
-    }, [notes])
+        localStorage.setItem('notes', JSON.stringify([...notes]))
+    }, [[...notes]])
 
     return(
         <ul>
@@ -30,7 +30,7 @@ export default function ListNotes({notes, remove}){
             <li className='notes' key={i}>
                 <span className={`${note.complited ? 'text-decoration-line-through' : ''} `}>{note.title}</span>
                 <span>
-                    <span onClick={(e) => handleSuccess(i, e)}  data-type='toggle' data-index={i} className={`btn-small ${note.complited ? 'warning' : 'btn-success'}`}>^</span>
+                    <span onClick={(e) => handleSuccess(i, e)}  data-type='toggle' data-index={i} className={`btn-small ${note.complited ? 'warning' : 'btn-success'}`}>✓</span>
                     <span onClick={() => handleRemove(i)} data-index={i} className="btn-small btn-danger">X</span>
                 </span>
             </li>)}

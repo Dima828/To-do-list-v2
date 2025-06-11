@@ -1,14 +1,20 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import ListNotes from './Components/Notes/ListNotes'
 import Form from './Components/Form/Form'
 
 function App() {
-  const [notes, setNotes] = useState([
+
+  const [notes, setNotes] = useState(
+    JSON.parse(localStorage.getItem('notes')) ||[
     {id: 1, title: '111', complited: false},
     {id: 2, title: '222', complited: false},
     {id: 3, title: '333', complited: false},
   ])
+
+  useEffect(() =>{
+    localStorage.setItem('notes', JSON.stringify(notes))
+  }, [notes])
 
   const createNote = (newNote) =>{
     setNotes([...notes, newNote])
