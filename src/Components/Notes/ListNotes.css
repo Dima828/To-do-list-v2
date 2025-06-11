@@ -37,7 +37,7 @@ ul span:last-child{
 }
 
 .text-decoration-line-through{
-    text-decoration: underline;
+    text-decoration: line-through;
 }
 
 .btn-danger{

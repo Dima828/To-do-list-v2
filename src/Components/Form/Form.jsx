@@ -5,14 +5,13 @@ import '../Form/Form.css'
 
 export default function Form({create}){
     const [value, setValue] = useState('')
-
     const addNotes = () =>{
         if(value.length === 0){
             return
         }else{
             const newNote = {
                 title: value,
-                complited: false
+                complited: false,
             }
             create(newNote)
             setValue('')
